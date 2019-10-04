@@ -8,9 +8,9 @@ carriers = {
     'sprint':   '@page.nextel.com'
 }
 
-def send(message):
+def send(number, carrier, message):
         # Replace the number with your own, or consider using an argument\dict for multiple people.
-    to_number = (info.number).format(carriers['verizon'])
+    to_number = (number).format(carriers[carrier])
     auth = (info.email, info.password)
 
     # Establish a secure session with gmail's outgoing SMTP server using your gmail account
@@ -23,7 +23,8 @@ def send(message):
 
 def main():
     print("sending")
-    send("hello world")
+    for phone, carrier in info.numbers.items():
+        send(phone, carrier, "test asdfa")
 
 if __name__ == "__main__":
     main()

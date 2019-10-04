@@ -1,4 +1,4 @@
 #example of formatting for info file
 email = 'person@gmail.com'
 password = 'password'
-number = '0000000000{}'
+numbers = {'0000000000{}':'verizon', '1111111111{}':'att'}
