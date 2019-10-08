@@ -81,8 +81,8 @@ def main():
     send(list(info.numbers.keys())[0], list(info.numbers.values())[0], ("Ovechkin Goal Tracker Started!"))
 
     while True:
-	updated = get_goals()
-        if (updated>goals):
+        updated = get_goals()
+        if (isinstance(updated,int) and updated>goals):
         #if there is a goal update, get data and send messages
             goals = updated 
             games = get_games()
