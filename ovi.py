@@ -40,7 +40,7 @@ def get_goals():
     #text admin (first no. in list) if exception
         phone = list(info.numbers.keys())[0]
         carrier = list(info.numbers.values())[0]
-        send(phone, carrier, f"Unable to check Ovi goals at {date.today}")
+        send(phone, carrier, f"Unable to check Ovi goals at {date.today()}")
 
 def get_games():
     URL = "https://statsapi.web.nhl.com/api/v1/people/8471214/stats?stats=statsSingleSeason&season=20192020"
@@ -55,7 +55,7 @@ def get_games():
     #text admin (first no. in list) if exception
         phone = list(info.numbers.keys())[0]
         carrier = list(info.numbers.values())[0]
-        send(phone, carrier, f"Unable to check Ovi games at {date.today}")
+        send(phone, carrier, f"Unable to check Ovi games at {date.today()}")
 
 def get_rank():
     URL = "https://statsapi.web.nhl.com/api/v1/people/8471214/stats?stats=regularSeasonStatRankings&season=20192020"
@@ -71,21 +71,20 @@ def get_rank():
     #text admin (first no. in list) if exception
         phone = list(info.numbers.keys())[0]
         carrier = list(info.numbers.values())[0]
-        send(phone, carrier, f"Unable to check Ovi rank at {date.today}")
+        send(phone, carrier, f"Unable to check Ovi rank at {date.today()}")
 
 def main():
+    time.sleep(20)
     goals = get_goals()
-    updated = 0    
+    updated = 0
 
-    for phone, carrier in info.numbers.items():
-        send(phone, carrier, ("Ovechkin Goal Tracker Started!"))
+    send(list(info.numbers.keys())[0], list(info.numbers.values())[0], ("Ovechkin Goal Tracker Started!"))
 
     while True:
-        updated = get_goals()
-
-        if (updated != goals):
+	updated = get_goals()
+        if (updated>goals):
         #if there is a goal update, get data and send messages
-            goals = updated
+            goals = updated 
             games = get_games()
             rank = get_rank()
 
